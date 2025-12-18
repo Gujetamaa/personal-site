@@ -26,7 +26,10 @@ export default function ProjectsPage() {
             and admin CMS.
           </p>
 
-          <a href="#" className={styles.link}>
+          <a
+            href="/projects/personal-site"
+            className={styles.link}
+          >
             View case study →
           </a>
         </article>
@@ -44,7 +47,10 @@ export default function ProjectsPage() {
             focused on reliability, cost control, and observability.
           </p>
 
-          <a href="#" className={styles.link}>
+          <a
+            href="/projects/aws-scraper"
+            className={styles.link}
+          >
             View case study →
           </a>
         </article>

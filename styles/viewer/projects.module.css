@@ -44,6 +44,10 @@
   letter-spacing: 0.05em;
 }
 
+.date {
+  opacity: 0.8;
+}
+
 .projectTitle {
   font-size: 1.4rem;
   font-weight: 500;
