@@ -35,4 +35,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.9rem;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.nav-right {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
 }
