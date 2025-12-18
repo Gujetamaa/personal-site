@@ -8,7 +8,7 @@ export default function ViewerLayout({
   return (
     <>
       <nav className="nav">
-        <strong>jerico.</strong>
+        <strong>je.</strong>
         <div className="nav-right">
           <a href="/">Home</a>
           <a href="/projects">Projects</a>
