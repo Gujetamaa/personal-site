@@ -1,44 +1,72 @@
+import { supabase } from "@/lib/supabase/client";
+
+export type BlogSection = {
+  heading: string;
+  body: string[];
+};
+
 export type BlogPost = {
+  id: string;
   slug: string;
   title: string;
-  date: string;
-  description: string;
-  sections: {
-    heading: string;
-    body: string[];
-  }[];
+  description: string | null;
+  date: string | null;
+  sections: BlogSection[];
 };
 
-export const BLOG_POSTS: Record<string, BlogPost> = {
-  "first-post": {
-    slug: "first-post",
-    title: "Why I Structure Projects Before Features",
-    date: "2025",
-    description:
-      "Thoughts on architecture-first development and avoiding rewrites.",
-    sections: [
-      {
-        heading: "The problem",
-        body: [
-          "Most personal sites grow organically and collapse under their own structure.",
-          "I wanted to avoid that by committing to separation early."
-        ]
-      },
-      {
-        heading: "What worked",
-        body: [
-          "Using route groups to separate viewer and admin logic.",
-          "Treating pages like database rows from day one."
-        ]
-      }
-    ]
+/**
+ * Get all published blog posts (for /blog)
+ */
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .select(
+      `
+      id,
+      slug,
+      title,
+      description,
+      date,
+      sections
+      `
+    )
+    .eq("published", true)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Error fetching blog posts:", error);
+    return [];
   }
-};
 
-export function getAllBlogPosts(): BlogPost[] {
-  return Object.values(BLOG_POSTS);
+  return data ?? [];
 }
 
-export function getBlogPost(slug: string): BlogPost | null {
-  return BLOG_POSTS[slug] ?? null;
+/**
+ * Get single blog post by slug (for /blog/[slug])
+ */
+export async function getBlogPostBySlug(
+  slug: string
+): Promise<BlogPost | null> {
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .select(
+      `
+      id,
+      slug,
+      title,
+      description,
+      date,
+      sections
+      `
+    )
+    .eq("slug", slug)
+    .eq("published", true)
+    .single();
+
+  if (error) {
+    console.error("Error fetching blog post:", error);
+    return null;
+  }
+
+  return data;
 }

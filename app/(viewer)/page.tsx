@@ -8,7 +8,9 @@ export default function Home() {
       <h1 className={styles.title}>Jerico</h1>
 
       <p className={styles.subtitle}>
-        I build thoughtful web systems and products.
+        I build things that matter — from scalable web systems to thoughtful
+        developer tools. Currently exploring full-stack engineering, databases,
+        and product-driven software.
       </p>
     </main>
   );

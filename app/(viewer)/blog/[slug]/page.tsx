@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import styles from "@/styles/viewer/blog-detail.module.css";
-import { getBlogPost } from "@/lib/blog";
+import { getBlogPostBySlug } from "@/lib/blog";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -8,16 +8,24 @@ type Props = {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) return notFound();
 
   return (
     <main className={styles.page}>
       <header className={styles.header}>
-        <p className={styles.meta}>{post.date}</p>
+        {post.date && (
+          <p className={styles.meta}>{post.date}</p>
+        )}
+
         <h1 className={styles.title}>{post.title}</h1>
-        <p className={styles.description}>{post.description}</p>
+
+        {post.description && (
+          <p className={styles.description}>
+            {post.description}
+          </p>
+        )}
       </header>
 
       {post.sections.map((section) => (
@@ -26,9 +34,9 @@ export default async function BlogPostPage({ params }: Props) {
             {section.heading}
           </h2>
 
-          {section.body.map((p, i) => (
+          {section.body.map((paragraph, i) => (
             <p key={i} className={styles.paragraph}>
-              {p}
+              {paragraph}
             </p>
           ))}
         </section>

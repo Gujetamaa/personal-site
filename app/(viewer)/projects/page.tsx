@@ -1,59 +1,35 @@
+import Link from "next/link";
 import styles from "@/styles/viewer/projects.module.css";
+import { getProjects } from "@/lib/projects";
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
+
   return (
-    <main className={styles.container}>
+    <main className={styles.page}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Projects</h1>
+        <p className={styles.kicker}>Projects</p>
+        <h1 className={styles.title}>Selected work</h1>
         <p className={styles.subtitle}>
-          A collection of things I’ve built — from experiments to production
-          systems.
+          Case studies focused on structure, clarity, and decisions.
         </p>
       </header>
 
       <section className={styles.list}>
-        <article className={styles.project}>
-          <div className={styles.meta}>
-            <span className={styles.tag}>Web</span>
-            <span className={styles.date}>2025</span>
-          </div>
+        {projects.map((project) => (
+          <article key={project.id} className={styles.card}>
+            <p className={styles.meta}>
+              {project.tag}
+              {project.year && ` · ${project.year}`}
+            </p>
 
-          <h2 className={styles.projectTitle}>Personal Site Platform</h2>
-
-          <p className={styles.description}>
-            A content-driven personal website built with Next.js, Supabase, and
-            TypeScript. Designed for static performance with a dynamic backend
-            and admin CMS.
-          </p>
-
-          <a
-            href="/projects/personal-site"
-            className={styles.link}
-          >
-            View case study →
-          </a>
-        </article>
-
-        <article className={styles.project}>
-          <div className={styles.meta}>
-            <span className={styles.tag}>Systems</span>
-            <span className={styles.date}>2024</span>
-          </div>
-
-          <h2 className={styles.projectTitle}>AWS Scraping Pipeline</h2>
-
-          <p className={styles.description}>
-            A serverless data scraping system using AWS Lambda and DynamoDB,
-            focused on reliability, cost control, and observability.
-          </p>
-
-          <a
-            href="/projects/aws-scraper"
-            className={styles.link}
-          >
-            View case study →
-          </a>
-        </article>
+            <h2 className={styles.projectTitle}>
+              <Link href={`/projects/${project.slug}`}>
+                {project.title}
+              </Link>
+            </h2>
+          </article>
+        ))}
       </section>
     </main>
   );

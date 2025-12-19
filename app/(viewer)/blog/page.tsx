@@ -1,9 +1,9 @@
 import Link from "next/link";
 import styles from "@/styles/viewer/blog.module.css";
-import { getAllBlogPosts } from "@/lib/blog";
+import { getBlogPosts } from "@/lib/blog";
 
-export default function BlogPage() {
-  const posts = getAllBlogPosts();
+export default async function BlogPage() {
+  const posts = await getBlogPosts();
 
   return (
     <main className={styles.page}>
@@ -17,8 +17,10 @@ export default function BlogPage() {
 
       <section className={styles.list}>
         {posts.map((post) => (
-          <article key={post.slug} className={styles.card}>
-            <p className={styles.meta}>{post.date}</p>
+          <article key={post.id} className={styles.card}>
+            {post.date && (
+              <p className={styles.meta}>{post.date}</p>
+            )}
 
             <h2 className={styles.postTitle}>
               <Link href={`/blog/${post.slug}`}>
@@ -26,9 +28,11 @@ export default function BlogPage() {
               </Link>
             </h2>
 
-            <p className={styles.description}>
-              {post.description}
-            </p>
+            {post.description && (
+              <p className={styles.description}>
+                {post.description}
+              </p>
+            )}
           </article>
         ))}
       </section>
