@@ -1,0 +1,67 @@
+.page {
+  padding: 72px 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.title {
+  font-size: 44px;
+  line-height: 1.1;
+  margin: 8px 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  max-width: 64ch;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.list {
+  display: grid;
+  gap: 28px;
+}
+
+.card {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.meta {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-bottom: 6px;
+}
+
+.postTitle {
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+
+.postTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.postTitle a:hover {
+  text-decoration: underline;
+}
+
+.description {
+  max-width: 70ch;
+  font-size: 15px;
+  opacity: 0.8;
+  margin: 0;
+}

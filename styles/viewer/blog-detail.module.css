@@ -1,0 +1,46 @@
+.page {
+  padding: 72px 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 56px;
+}
+
+.meta {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.title {
+  font-size: 46px;
+  line-height: 1.08;
+  margin: 10px 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  max-width: 68ch;
+  font-size: 17px;
+  opacity: 0.85;
+}
+
+/* Content sections */
+
+.section {
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 22px;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+.paragraph {
+  max-width: 72ch;
+  line-height: 1.75;
+  margin: 12px 0;
+  font-size: 15.5px;
+}
