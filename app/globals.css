@@ -31,11 +31,16 @@ body {
 }
 
 .nav {
+  position: sticky;  
   padding: 1.5rem 2rem;
+  top: 0;
+  z-index: 100;  
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
+  background: var(--background);
+  backdrop-filter: saturate(180%) blur(8px);  
 }
 
 .nav a {
