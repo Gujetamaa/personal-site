@@ -8,22 +8,26 @@ export default function Home() {
       <section className={styles.hero}>
         <p className={styles.eyebrow}>&gt; hello, world_</p>
 
-        <h1 className={styles.title}>Jerico</h1>
+        <h1 className={styles.title}>Jerico Ibañez</h1>
 
         <p className={styles.role}>
-          Software Engineer · building things that matter
+          Backend-focused Software Engineer
         </p>
 
         <p className={styles.intro}>
-          I turn late nights and rabbit holes into products people actually use.
-          I care about structure, clarity, and making complex systems feel calm.
-          Currently exploring full-stack engineering, databases, and
-          product-driven software.
+          I build backend systems that replace manual processes, support real
+          users, and hold up under real-world constraints.
+        </p>
+
+        <p className={styles.intro}>
+          My work spans civic platforms, internal tools, and automation-heavy
+          systems — with a focus on authentication, data integrity, and scalable
+          workflows.
         </p>
 
         <p className={styles.note}>
-          Fun fact: I grew up playing Minecraft — it taught me that even the most
-          complex structures start with a single block.
+          Currently studying Information Technology at De La Salle University –
+          Manila.
         </p>
       </section>
 
@@ -34,14 +38,19 @@ export default function Home() {
             <p className={styles.sectionLabel}>Technologies</p>
 
             <div className={styles.sectionContent}>
+              <p className={styles.sectionText}>
+                Tools I’ve used to ship production systems and internal platforms.
+              </p>
+
               <div className={styles.techList}>
                 <span>TypeScript</span>
-                <span>React</span>
                 <span>Next.js</span>
                 <span>Node.js</span>
+                <span>Ruby on Rails</span>
                 <span>PostgreSQL</span>
-                <span>AWS</span>
                 <span>Supabase</span>
+                <span>Firebase</span>
+                <span>REST APIs</span>
               </div>
             </div>
           </div>
@@ -56,9 +65,9 @@ export default function Home() {
 
             <div className={styles.sectionContent}>
               <p className={styles.sectionText}>
-                I write about software development, system design, and lessons
-                learned from building products. Check out my blog for technical
-                deep-dives and project retrospectives.
+                I write short notes on backend design decisions, system trade-offs,
+                and lessons learned from building, testing, and maintaining real
+                applications.
               </p>
             </div>
           </div>
@@ -73,15 +82,22 @@ export default function Home() {
 
             <div className={styles.sectionContent}>
               <p className={styles.sectionText}>
-                I’m a software engineer who believes the best code is the code you
-                don’t have to write. My philosophy is{" "}
-                <em>“What I cannot build, I do not understand.”</em>
+                I’ve worked on government and client-facing platforms serving tens
+                of thousands of users, primarily focusing on backend development
+                and system reliability.
               </p>
 
               <p className={styles.sectionText}>
-                When I’m not shipping features late at night, you’ll find me
-                chasing a new obsession — currently hiking, previously Muay Thai,
-                cycling, and running.
+                My experience includes building authentication systems,
+                role-based access controls, automated reporting pipelines, and
+                notification workflows that replace manual or paper-based
+                processes.
+              </p>
+
+              <p className={styles.sectionText}>
+                I’m also comfortable testing systems end-to-end, documenting
+                issues clearly, and collaborating closely with frontend
+                developers to keep data flow predictable and maintainable.
               </p>
             </div>
           </div>
@@ -95,12 +111,12 @@ export default function Home() {
             {/* Left */}
             <div>
               <h2 className={styles.footerTitle}>
-                Let’s build something together.
+                Let’s build something reliable.
               </h2>
 
               <p className={styles.footerText}>
-                Got an idea? I’m always up for a new challenge — whether it’s a
-                side project, a startup, or something in between.
+                If you’re working on a system that needs to scale, automate
+                workflows, or replace manual processes, I’d be happy to talk.
               </p>
             </div>
 
@@ -125,7 +141,7 @@ export default function Home() {
           </div>
 
           <div className={styles.footerMeta}>
-            <p>© 2025 Jerico Ibañez. All rights reserved.</p>
+            <p>© 2025 Jerico Ibañez.</p>
             <p>Built with Next.js & TypeScript</p>
           </div>
         </section>
