@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import styles from "@/styles/viewer/home.module.css";
 import { Reveal } from "@/components/Reveal";
 
