@@ -1,0 +1,41 @@
+.sidebar {
+  background: #000;
+  color: #fff;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.nav {
+  display: grid;
+  gap: 10px;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.logout {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}

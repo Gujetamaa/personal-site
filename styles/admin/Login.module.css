@@ -1,0 +1,210 @@
+/* Page background */
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background:
+    radial-gradient(900px circle at 50% 40%, var(--login-bg-accent), transparent 60%),
+    var(--login-bg);
+}
+
+/* Theme toggle top-right */
+.themeToggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+}
+
+/* Card */
+.card {
+  width: 100%;
+  max-width: 460px;
+  padding: 34px 34px 30px;
+  border-radius: 18px;
+  background: var(--login-card-bg);
+  border: 1px solid var(--login-border);
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--login-border);
+  display: grid;
+  place-items: center;
+  color: var(--login-text);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  color: var(--login-text);
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  color: var(--login-muted);
+}
+
+/* Form */
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+/* Field block */
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: var(--login-text);
+  opacity: 0.9;
+}
+
+/* Inputs — THIS is the big fix */
+.input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 12px;
+  border-radius: 12px;
+
+  border: 1px solid var(--login-border);
+  background: var(--login-input-bg);
+  color: var(--login-text);
+
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.input::placeholder {
+  color: var(--login-placeholder);
+}
+
+.input:hover {
+  border-color: var(--login-border-hover);
+}
+
+.input:focus {
+  border-color: var(--login-accent);
+  box-shadow: 0 0 0 3px var(--login-focus-ring);
+}
+
+/* Options row (checkbox aligned left) */
+.optionsRow {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2px;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--login-muted);
+  user-select: none;
+}
+
+.checkboxInput {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--login-accent);
+}
+
+/* Error */
+.error {
+  font-size: 0.9rem;
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.25);
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+/* Primary button — full width */
+.primaryButton {
+  margin-top: 6px;
+  width: 100%;
+  display: block;
+  padding: 12px 14px;
+  border-radius: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 1), rgba(37, 99, 235, 1));
+  color: white;
+
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform 80ms ease, opacity 120ms ease, filter 120ms ease;
+}
+
+.primaryButton:hover {
+  filter: brightness(1.03);
+}
+
+.primaryButton:active {
+  transform: translateY(1px);
+}
+
+.primaryButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* -----------------------------
+   Theme variables
+   These match your next-themes data-theme approach
+------------------------------ */
+
+:global(html[data-theme="light"]) {
+  --login-bg: #f3f4f6;
+  --login-bg-accent: #e0e7ff;
+
+  --login-card-bg: #ffffff;
+  --login-border: #d8dde6;
+  --login-border-hover: #b9c2d3;
+
+  --login-input-bg: #f8fafc;
+  --login-text: #0b1220;
+  --login-muted: rgba(11, 18, 32, 0.65);
+  --login-placeholder: rgba(11, 18, 32, 0.35);
+
+  --login-accent: #2563eb;
+  --login-focus-ring: rgba(37, 99, 235, 0.18);
+}
+
+:global(html[data-theme="dark"]) {
+  --login-bg: #05070d;
+  --login-bg-accent: rgba(30, 64, 175, 0.18);
+
+  --login-card-bg: rgba(15, 20, 34, 0.72);
+  --login-border: rgba(255, 255, 255, 0.10);
+  --login-border-hover: rgba(255, 255, 255, 0.18);
+
+  --login-input-bg: rgba(10, 14, 26, 0.65);
+  --login-text: rgba(255, 255, 255, 0.92);
+  --login-muted: rgba(255, 255, 255, 0.62);
+  --login-placeholder: rgba(255, 255, 255, 0.32);
+
+  --login-accent: #3b82f6;
+  --login-focus-ring: rgba(59, 130, 246, 0.20);
+}

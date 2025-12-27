@@ -1,0 +1,12 @@
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  background: #fafafa;
+}
+
+.main {
+  padding: 32px;
+  background: #ffffff;
+  color: #000000;
+}

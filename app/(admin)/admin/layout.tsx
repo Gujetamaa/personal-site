@@ -1,12 +1,14 @@
 import { ReactNode } from "react";
 import { redirect } from "next/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import AdminSidebar from "./components/AdminSidebar";
+import styles from "@/styles/admin/AdminLayout.module.css";
 
-type AdminLayoutProps = {
+export default async function AdminLayout({
+  children,
+}: {
   children: ReactNode;
-};
-
-export default async function AdminLayout({ children }: AdminLayoutProps) {
+}) {
   const supabase = await createServerSupabaseClient();
 
   const {
@@ -18,8 +20,9 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
   }
 
   return (
-    <div style={{ minHeight: "100vh", padding: 40 }}>
-      {children}
+    <div className={styles.layout}>
+      <AdminSidebar />
+      <main className={styles.main}>{children}</main>
     </div>
   );
 }

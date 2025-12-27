@@ -1,8 +1,10 @@
-export default function AdminPage() {
+export default function AdminHomePage() {
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <p>You are logged in.</p>
+    <div style={{ display: "grid", gap: 12 }}>
+      <h1>Admin</h1>
+      <p style={{ opacity: 0.7 }}>
+        Manage projects and blog content.
+      </p>
     </div>
   );
 }

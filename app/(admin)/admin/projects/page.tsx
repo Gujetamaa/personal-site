@@ -1,63 +1,77 @@
 import Link from "next/link";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import type { Project } from "@/lib/projects/projectTypes";
+import styles from "@/styles/admin/AdminProjects.module.css";
 
 export const dynamic = "force-dynamic";
-
-
 
 export default async function AdminProjectsPage() {
   const supabase = await createServerSupabaseClient();
 
-    const { data: projects, error } = await supabase
+  const { data, error } = await supabase
     .from("projects")
     .select("id, slug, title, year, tag, published, created_at")
     .order("created_at", { ascending: false });
 
-    const typedProjects = projects as Project[] | null;  
+  const projects = data as Project[] | null;
 
   if (error) {
-    return (
-      <div>
-        <h1>Projects</h1>
-        <p style={{ color: "crimson" }}>{error.message}</p>
-      </div>
-    );
+    return <p className={styles.error}>{error.message}</p>;
   }
 
   return (
-    <div style={{ display: "grid", gap: 16 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+    <section className={styles.wrapper}>
+      <div className={styles.header}>
         <h1>Projects</h1>
         <Link href="/admin/projects/new">+ New project</Link>
       </div>
 
-      <div style={{ display: "grid", gap: 8 }}>
-        {projects?.map((p: Project) => (
-          <div
-            key={p.id}
-            style={{
-              border: "1px solid var(--border, #3333)",
-              borderRadius: 12,
-              padding: 12,
-              display: "flex",
-              justifyContent: "space-between",
-              gap: 12,
-            }}
-          >
-            <div style={{ display: "grid" }}>
-              <strong>{p.title}</strong>
-              <span style={{ opacity: 0.75 }}>
-                /projects/{p.slug} {p.year ? `• ${p.year}` : ""} {p.tag ? `• ${p.tag}` : ""}
-              </span>
-            </div>
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Created</th>
+              <th>Tag</th>
+              <th>Year</th>
+              <th>Status</th>
+              <th />
+            </tr>
+          </thead>
 
-            <div style={{ textAlign: "right" }}>
-              <span style={{ opacity: 0.75 }}>{p.published ? "Published" : "Draft"}</span>
-            </div>
-          </div>
-        ))}
+          <tbody>
+            {projects?.map((p) => (
+              <tr key={p.id}>
+                <td>
+                  <strong>{p.title}</strong>
+                  <div className={styles.sub}>
+                    /projects/{p.slug}
+                  </div>
+                </td>
+                <td>{new Date(p.created_at).toLocaleDateString()}</td>
+                <td>{p.tag ?? "-"}</td>
+                <td>{p.year ?? "-"}</td>
+                <td>
+                  <span className={styles.status}>
+                    {p.published ? "Published" : "Draft"}
+                  </span>
+                </td>
+                <td>
+                  <Link href={`/projects/${p.slug}`}>View</Link>
+                </td>
+              </tr>
+            ))}
+
+            {projects?.length === 0 && (
+              <tr>
+                <td colSpan={6} className={styles.empty}>
+                  No projects yet.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
-    </div>
+    </section>
   );
 }
